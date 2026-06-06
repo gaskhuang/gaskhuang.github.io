@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 AI 個人超強助理 — 全日實戰課程</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "SF Mono", "JetBrains Mono", "Fira Code", "Cascadia Code", "Consolas", "Menlo", monospace;
+    background: #F5F7FA;
+    color: #2C3E50;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* Navigation */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: #2C3E50;
+    color: #F5F7FA;
+    border-bottom: 2px solid #4A6FA5;
+    padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 52px;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+  nav .logo {
+    font-weight: 700;
+    color: #F5F7FA;
+    white-space: nowrap;
+  }
+  nav .logo span { color: #4A6FA5; }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  nav ul li a {
+    display: block;
+    padding: 6px 10px;
+    color: #ECEFF1;
+    border: 1px solid transparent;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+    font-size: 11px;
+  }
+  nav ul li a:hover { background: #4A6FA5; color: #fff; }
+
+  /* Main container */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  /* Sections */
+  section { padding: 64px 0; border-bottom: 1px solid #ECEFF1; }
+  section:last-child { border-bottom: none; }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #4A6FA5;
+    display: inline-block;
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #4A6FA5;
+  }
+
+  /* Hero */
+  #hero {
+    padding: 100px 0 64px;
+    background: #2C3E50;
+    color: #F5F7FA;
+    border-bottom: 4px solid #4A6FA5;
+  }
+  #hero .hero-img { margin-bottom: 32px; }
+  #hero .hero-img img {
+    width: 100%; max-width: 640px; display: block;
+    border: 2px solid #4A6FA5;
+  }
+  #hero h1 { font-size: 30px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em; }
+  #hero .subtitle { font-size: 18px; color: #ECEFF1; margin-bottom: 8px; }
+  #hero .tagline {
+    font-size: 14px; color: #4A6FA5;
+    border-left: 3px solid #4A6FA5; padding-left: 12px;
+    margin-top: 16px;
+  }
+
+  /* Value Props Grid */
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2px;
+    background: #2C3E50;
+    border: 2px solid #2C3E50;
+  }
+  .value-grid .item {
+    background: #F5F7FA;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .value-grid .item .icon { font-size: 28px; display: block; margin-bottom: 8px; }
+  .value-grid .item .label { font-weight: 600; font-size: 13px; letter-spacing: 0.01em; }
+
+  /* Demo cards */
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: #2C3E50;
+    border: 2px solid #2C3E50;
+  }
+  .demo-card {
+    background: #F5F7FA;
+    padding: 20px;
+  }
+  .demo-card img {
+    width: 100%; display: block;
+    border: 1px solid #ECEFF1;
+    margin-bottom: 12px;
+  }
+  .demo-card .demo-num {
+    display: inline-block;
+    background: #4A6FA5;
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .demo-card h3 { margin-bottom: 6px; }
+  .demo-card p { font-size: 13px; color: #555; line-height: 1.5; }
+
+  /* Table */
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #2C3E50;
+    font-size: 13px;
+  }
+  .schedule-table th {
+    background: #2C3E50;
+    color: #F5F7FA;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .schedule-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #ECEFF1;
+    vertical-align: top;
+  }
+  .schedule-table tr:last-child td { border-bottom: none; }
+  .schedule-table .time-col { white-space: nowrap; color: #4A6FA5; font-weight: 600; width: 80px; }
+
+  /* Image + caption block */
+  .img-block { margin-bottom: 40px; }
+  .img-block:last-child { margin-bottom: 0; }
+  .img-block img {
+    width: 100%; display: block;
+    border: 1px solid #ECEFF1;
+    margin-bottom: 10px;
+  }
+  .img-block .caption {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+    padding: 8px 12px;
+    border-left: 3px solid #4A6FA5;
+    background: #F5F7FA;
+  }
+  .img-block .caption strong { color: #2C3E50; }
+
+  /* Matrix 2x2 */
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: #2C3E50;
+    border: 2px solid #2C3E50;
+  }
+  .matrix-cell {
+    background: #F5F7FA;
+    padding: 20px;
+  }
+  .matrix-cell h3 { font-size: 14px; margin-bottom: 6px; }
+  .matrix-cell p { font-size: 12px; color: #555; line-height: 1.5; }
+  .matrix-cell .mq { color: #4A6FA5; font-weight: 700; font-size: 11px; display: block; margin-bottom: 4px; }
+
+  /* Plugins flow */
+  .plugin-flow {
+    display: flex;
+    gap: 2px;
+    flex-wrap: wrap;
+    background: #2C3E50;
+    border: 2px solid #2C3E50;
+  }
+  .plugin-flow .step {
+    flex: 1 1 200px;
+    background: #F5F7FA;
+    padding: 20px;
+    text-align: center;
+  }
+  .plugin-flow .step .arrow { color: #4A6FA5; font-size: 20px; display: block; margin: 4px 0; }
+  .plugin-flow .step h3 { font-size: 14px; }
+  .plugin-flow .step p { font-size: 12px; color: #555; }
+
+  /* 7-day challenge */
+  .day-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2px;
+    background: #2C3E50;
+    border: 2px solid #2C3E50;
+  }
+  .day-cell {
+    background: #F5F7FA;
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .day-cell .day-num {
+    display: inline-block;
+    background: #2C3E50;
+    color: #F5F7FA;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .day-cell h4 { font-size: 13px; margin-bottom: 4px; }
+  .day-cell p { font-size: 11px; color: #555; line-height: 1.4; }
+
+  /* ROI numbers */
+  .roi-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+    background: #2C3E50;
+    border: 2px solid #2C3E50;
+  }
+  .roi-card {
+    background: #F5F7FA;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .roi-card .number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #4A6FA5;
+    display: block;
+  }
+  .roi-card .unit { font-size: 12px; color: #888; }
+  .roi-card .label { font-size: 13px; margin-top: 4px; color: #2C3E50; }
+
+  /* Footer/Closing */
+  #closing {
+    background: #2C3E50;
+    color: #F5F7FA;
+    border-top: 4px solid #4A6FA5;
+    padding-bottom: 80px;
+  }
+  #closing h2 { border-bottom-color: #4A6FA5; }
+  #closing .caption { border-left-color: #4A6FA5; background: #3a506e; color: #ECEFF1; }
+  .closing-quote {
+    margin-top: 32px;
+    padding: 20px;
+    border: 2px solid #4A6FA5;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .closing-quote small {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #ECEFF1;
+  }
+
+  /* Footer */
+  .page-footer {
+    background: #1a252f;
+    color: #ECEFF1;
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    border-top: 1px solid #2C3E50;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    nav { padding: 0 12px; }
+    nav .logo { font-size: 11px; }
+    nav ul li a { padding: 6px 6px; font-size: 10px; }
+    #hero { padding: 80px 0 40px; }
+    #hero h1 { font-size: 22px; }
+    #hero .subtitle { font-size: 15px; }
+    section { padding: 40px 0; }
+    h2 { font-size: 18px; }
+    .value-grid { grid-template-columns: repeat(2, 1fr); }
+    .matrix-grid { grid-template-columns: 1fr; }
+    .schedule-table { font-size: 12px; }
+    .schedule-table th, .schedule-table td { padding: 8px; }
+    .roi-card .number { font-size: 26px; }
+    .day-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<nav>
+  <div class="logo">🧠 AI<span>助理</span></div>
+  <ul>
+    <li><a href="#hero">首頁</a></li>
+    <li><a href="#value">價值</a></li>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#schedule">時間表</a></li>
+    <li><a href="#duties">職責</a></li>
+    <li><a href="#matrix">矩陣</a></li>
+    <li><a href="#plugins">外掛</a></li>
+    <li><a href="#trust">信任</a></li>
+    <li><a href="#templates">模板</a></li>
+    <li><a href="#challenge">7天</a></li>
+    <li><a href="#roi">ROI</a></li>
+    <li><a href="#closing">結業</a></li>
+  </ul>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-img">
+      <img src="img/cover.png" alt="AI 個人超強助理全日實戰課程封面">
+    </div>
+    <h1>🧠 AI 個人超強助理<br>全日實戰課程</h1>
+    <div class="subtitle">高階知識工作者最強數位分身助理</div>
+    <div class="tagline">不是教你用 AI，而是幫你複製一個懂你的分身</div>
+  </div>
+</section>
+
+<!-- ========== CORE VALUE ========== -->
+<section id="value">
+  <div class="container">
+    <h2>五大核心價值</h2>
+    <div class="value-grid">
+      <div class="item"><span class="icon">🕐</span><span class="label">時間守護者</span></div>
+      <div class="item"><span class="icon">🧠</span><span class="label">第二大腦</span></div>
+      <div class="item"><span class="icon">📡</span><span class="label">情報雷達</span></div>
+      <div class="item"><span class="icon">🚀</span><span class="label">個人品牌加速器</span></div>
+      <div class="item"><span class="icon">📈</span><span class="label">收入槓桿</span></div>
+    </div>
+    <div class="img-block" style="margin-top:32px;">
+      <img src="img/value-props.png" alt="五大核心價值圖解">
+      <div class="caption"><strong>不只是工具，是五重戰鬥力疊加。</strong> 每一個價值都是一道護城河：守護你的時間、擴充你的記憶、掃描你的情報雷達、加速你的品牌輸出、放大你的收入倍率。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DEMO 3-in-1 ========== -->
+<section id="demo">
+  <div class="container">
+    <h2>開場 Demo 三合一</h2>
+    <p style="margin-bottom:24px;font-size:13px;color:#555;">三種最常見的高頻場景，一條指令即刻啟動你的數位分身。</p>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <span class="demo-num">DEMO 01</span>
+        <img src="img/demo1-reading.png" alt="資訊消化分身展示">
+        <h3>📖 資訊消化分身</h3>
+        <p>PDF / 長文 / YouTube 連結丟給分身 → 30 秒內產出結構化摘要，自動歸檔至個人知識庫。再也不怕閱讀 backlog。</p>
+      </div>
+      <div class="demo-card">
+        <span class="demo-num">DEMO 02</span>
+        <img src="img/demo2-voice.png" alt="雜務終結者展示">
+        <h3>🎤 雜務終結者</h3>
+        <p>語音靈感一錄 → 分身自動解析意圖，建立行事曆事件、草擬 Email 回覆、建立待辦事項。讓碎碎念變生產力。</p>
+      </div>
+      <div class="demo-card">
+        <span class="demo-num">DEMO 03</span>
+        <img src="img/demo3-meeting.png" alt="會議準備分身展示">
+        <h3>📋 會議準備分身</h3>
+        <p>會議前 5 分鐘自動產出「與會者背景 + 議題摘要 + 建議立場 + 提問清單」的完整準備包。讓你每次都像做過功課。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SCHEDULE ========== -->
+<section id="schedule">
+  <div class="container">
+    <h2>時間配置總覽</h2>
+    <p style="margin-bottom:20px;font-size:13px;color:#555;">全日實戰 09:00 – 16:30，從原理到部署，一天打造你的分身。</p>
+    <table class="schedule-table">
+      <thead>
+        <tr><th>時間</th><th>單元</th><th>內容</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="time-col">09:00</td><td>開場 &amp; 概念</td><td>數位分身哲學、課程目標、學員需求對焦</td></tr>
+        <tr><td class="time-col">09:30</td><td>Demo 三合一</td><td>閱讀分身 / 雜務終結者 / 會議分身 現場實演</td></tr>
+        <tr><td class="time-col">10:30</td><td>分身五大職責</td><td>守門員・記憶體・研究員・排程官・草稿手</td></tr>
+        <tr><td class="time-col">11:15</td><td>時間槓桿矩陣</td><td>四象限分析：哪些該自動、哪些該協作、哪些該你來</td></tr>
+        <tr><td class="time-col">12:00</td><td>午餐</td><td>—</td></tr>
+        <tr><td class="time-col">13:00</td><td>三大核心外掛</td><td>閱讀消化 → Drive 檔案 → 語音碎碎念 串接實作</td></tr>
+        <tr><td class="time-col">14:15</td><td>信任的邊界</td><td>資料分級制度 + HITL 人機協作原則</td></tr>
+        <tr><td class="time-col">15:00</td><td>角色模板 &amp; 7 天挑戰</td><td>四大模板套用＋微型分身養成計畫</td></tr>
+        <tr><td class="time-col">15:45</td><td>ROI 結算 &amp; 配置圖</td><td>時間→收入換算、輸出個人助理配置圖</td></tr>
+        <tr><td class="time-col">16:30</td><td>結業</td><td>關鍵句總結＋下一步行動</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ========== FIVE DUTIES ========== -->
+<section id="duties">
+  <div class="container">
+    <h2>分身五大職責</h2>
+    <div class="img-block">
+      <img src="img/five-duties.png" alt="分身五大職責圖示">
+      <div class="caption">
+        <strong>守門員</strong> — 過濾低價值資訊與干擾<br>
+        <strong>記憶體</strong> — 儲存你的知識、偏好與決策脈絡<br>
+        <strong>研究員</strong> — 自主蒐集、整理、提煉情報<br>
+        <strong>排程官</strong> — 管理行事曆與優先級<br>
+        <strong>草稿手</strong> — 產出第一版文案、郵件、報告
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TIME MATRIX ========== -->
+<section id="matrix">
+  <div class="container">
+    <h2>時間槓桿矩陣</h2>
+    <p style="margin-bottom:20px;font-size:13px;color:#555;">把時間花在對的地方，讓分身扛起重複與雜訊。</p>
+    <div class="matrix-grid">
+      <div class="matrix-cell">
+        <span class="mq">Q1 · 高價值 × 高重複</span>
+        <h3>🤖 分身自動區</h3>
+        <p>排程提醒、資訊摘要、模板回覆、檔案整理。全權交給分身，設定好 trigger 即可。</p>
+      </div>
+      <div class="matrix-cell">
+        <span class="mq">Q2 · 高價值 × 低重複</span>
+        <h3>🧑‍💻 人機協作區</h3>
+        <p>策略決策、創意發想、客戶溝通。分身提供草稿與數據，人類做最終判斷。</p>
+      </div>
+      <div class="matrix-cell">
+        <span class="mq">Q3 · 低價值 × 高重複</span>
+        <h3>🔄 委外改良區</h3>
+        <p>表單填寫、資料 key-in、基礎客服。不適合做就標準化委外或批次處理。</p>
+      </div>
+      <div class="matrix-cell">
+        <span class="mq">Q4 · 低價值 × 低重複</span>
+        <h3>👑 你的專屬區</h3>
+        <p>深度思考、人脈維護、身體健康。這些無法也「不該」被分身取代。</p>
+      </div>
+    </div>
+    <div class="img-block" style="margin-top:20px;">
+      <img src="img/time-matrix.png" alt="時間槓桿矩陣圖">
+      <div class="caption"><strong>矩陣邏輯：</strong> 把 Q1 全自動化、Q2 半自動化、Q3 標準化、Q4 留給自己。分身的邊界不是技術限制，而是你的刻意選擇。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== THREE PLUGINS ========== -->
+<section id="plugins">
+  <div class="container">
+    <h2>三大核心外掛</h2>
+    <p style="margin-bottom:20px;font-size:13px;color:#555;">三個外掛模組，覆蓋知識工作者 80% 的日常場景。</p>
+    <div class="plugin-flow">
+      <div class="step">
+        <h3>📖 閱讀消化分身</h3>
+        <p>接收任何連結或檔案 → 結構化摘要 → 寫入知識庫</p>
+        <span class="arrow">→</span>
+      </div>
+      <div class="step">
+        <h3>📁 Drive 檔案分身</h3>
+        <p>監控資料夾變更 → 自動分類 / 摘要 / 索引</p>
+        <span class="arrow">→</span>
+      </div>
+      <div class="step">
+        <h3>🎙️ 語音碎碎念</h3>
+        <p>語音錄入 → 語意解析 → 行事曆 / Email / 筆記</p>
+      </div>
+    </div>
+    <div class="img-block" style="margin-top:20px;">
+      <img src="img/three-plugins.png" alt="三大核心外掛示意圖">
+      <div class="caption"><strong>Plug &amp; Play。</strong> 每個外掛都是一條獨立 pipeline，可以單獨啟用、組合串接、或設定排程自動執行。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TRUST BOUNDARY ========== -->
+<section id="trust">
+  <div class="container">
+    <h2>信任的邊界</h2>
+    <div class="img-block">
+      <img src="img/trust-boundary.png" alt="信任的邊界資料安全分級圖">
+      <div class="caption">
+        <strong>資料安全三級制：</strong><br>
+        🔒 紅區（絕對機密）— 不餵給分身，永遠留在本地<br>
+        🟡 黃區（敏感但可處理）— 脫敏後交由分身，加入 HITL 審核<br>
+        🟢 綠區（日常工作）— 完全授權分身自動執行<br><br>
+        <strong>HITL 原則：</strong> Human-In-The-Loop，每一次對外輸出前，人類擁有最終審核權。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ROLE TEMPLATES ========== -->
+<section id="templates">
+  <div class="container">
+    <h2>角色模板包</h2>
+    <p style="margin-bottom:20px;font-size:13px;color:#555;">根據你的角色定位，套用對應的個人助理配置模板。</p>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>🏢 經理人版</h3>
+        <p style="font-size:12px;">會議摘要、團隊進度追蹤、決策備忘錄、郵件分級過濾。專為管理職設計的控制面板。</p>
+      </div>
+      <div class="demo-card">
+        <h3>📊 顧問版</h3>
+        <p style="font-size:12px;">產業情報監控、客戶背景速查、提案草稿生成、專案知識庫。讓每一次客戶溝通都有據可依。</p>
+      </div>
+      <div class="demo-card">
+        <h3>🔧 自由工作者版</h3>
+        <p style="font-size:12px;">報價單草擬、時程管理、作品集維護、客戶 follow-up 自動化。一個人就是一支團隊。</p>
+      </div>
+      <div class="demo-card">
+        <h3>✍️ 創作者版</h3>
+        <p style="font-size:12px;">靈感捕捉、內容大綱產出、排程發布、讀者互動分析。讓創作流程更順暢。</p>
+      </div>
+    </div>
+    <div class="img-block" style="margin-top:20px;">
+      <img src="img/role-templates.png" alt="角色模板包圖示">
+      <div class="caption"><strong>即裝即用。</strong> 每個模板包含完整的 prompt 組合、知識庫 schema、以及排程設定。5 分鐘完成部署。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 7-DAY CHALLENGE ========== -->
+<section id="challenge">
+  <div class="container">
+    <h2>7 天挑戰養成計畫</h2>
+    <p style="margin-bottom:20px;font-size:13px;color:#555;">每天一個微型分身，一週打造你的 AI 助理生態系。</p>
+    <div class="day-grid">
+      <div class="day-cell">
+        <span class="day-num">DAY 1</span>
+        <h4>📎 檔案分類員</h4>
+        <p>自動歸檔下載資料夾</p>
+      </div>
+      <div class="day-cell">
+        <span class="day-num">DAY 2</span>
+        <h4>📰 新聞過濾器</h4>
+        <p>每日情報摘要推送</p>
+      </div>
+      <div class="day-cell">
+        <span class="day-num">DAY 3</span>
+        <h4>✉️ 郵件起草員</h4>
+        <p>常用回覆模板自動化</p>
+      </div>
+      <div class="day-cell">
+        <span class="day-num">DAY 4</span>
+        <h4>📅 會議秘書</h4>
+        <p>會前準備包自動產出</p>
+      </div>
+      <div class="day-cell">
+        <span class="day-num">DAY 5</span>
+        <h4>📝 筆記整理員</h4>
+        <p>語音筆記結構化整理</p>
+      </div>
+      <div class="day-cell">
+        <span class="day-num">DAY 6</span>
+        <h4>🔗 閱讀摘要員</h4>
+        <p>書籤／文章自動摘要</p>
+      </div>
+      <div class="day-cell">
+        <span class="day-num">DAY 7</span>
+        <h4>⚙️ 整合指揮台</h4>
+        <p>串接所有微型分身</p>
+      </div>
+    </div>
+    <div class="img-block" style="margin-top:20px;">
+      <img src="img/7day-challenge.png" alt="7天挑戰養成計畫圖">
+      <div class="caption"><strong>每天 15 分鐘，累積複利效應。</strong> 第七天你將擁有七個微型分身協同運作的工作流。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ROI ========== -->
+<section id="roi">
+  <div class="container">
+    <h2>時間 → 收入 ROI 換算</h2>
+    <p style="margin-bottom:20px;font-size:13px;color:#555;">分身每天幫你回收 90 分鐘，一年就是將近一個月的額外生產力。</p>
+    <div class="roi-strip">
+      <div class="roi-card">
+        <span class="number">90</span><span class="unit"> 分鐘</span>
+        <div class="label">每天省下的時間</div>
+      </div>
+      <div class="roi-card">
+        <span class="number">7.5</span><span class="unit"> 小時</span>
+        <div class="label">每週多出的產能</div>
+      </div>
+      <div class="roi-card">
+        <span class="number">30</span><span class="unit"> 小時</span>
+        <div class="label">每月回收的工時</div>
+      </div>
+      <div class="roi-card">
+        <span class="number">~1</span><span class="unit"> 個月</span>
+        <div class="label">每年多活一個月</div>
+      </div>
+    </div>
+    <div class="img-block" style="margin-top:20px;">
+      <img src="img/time-to-income.png" alt="時間收入換算圖表">
+      <div class="caption"><strong>ROI 計算邏輯：</strong> 以時薪為基礎，每天省 90 分鐘 × 工作天數 = 每年回收超過 300 小時。這不是效率提升，是時間的二次創造。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CLOSING ========== -->
+<section id="closing">
+  <div class="container">
+    <h2>結業 — 你的分身上線</h2>
+    <div class="img-block">
+      <img src="img/cover.png" alt="結業個人助理配置圖">
+      <div class="caption">
+        <strong>個人助理配置圖</strong><br>
+        你帶走的不是投影片，而是一套已經在運作的個人助理系統：<br>
+        1 個指揮中心 ＋ 3 個核心外掛 ＋ 7 個微型分身 ＝ 你的數位分身第一版
+      </div>
+    </div>
+    <div class="closing-quote">
+      「最好的助理，是那個永遠在線、永遠記得、永遠不用睡覺的你。」
+      <small>— Promise AI Agent 全日實戰課程</small>
+    </div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  🧠 AI 個人超強助理 全日實戰課程 &nbsp;·&nbsp; Promise Studio &nbsp;·&nbsp; 高階知識工作者專屬
+</footer>
+
+</body>
+</html>
