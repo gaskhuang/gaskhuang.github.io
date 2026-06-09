@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🧠 AI 個人超強助理 全日實戰課程</title>
+<title>🧠 AI 個人超強助理 實戰課程</title>
 <style>
   /* ─── Reset & Base ─── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -366,6 +366,92 @@
     border-top: 2px solid var(--light-gray);
   }
 
+  /* ─── Event Info ─── */
+  .event-info {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin: 0 auto 32px;
+  }
+  .event-info .ev-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    border: 1.5px solid var(--teal);
+    color: var(--teal-dark);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 22px;
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(42,157,143,0.08);
+  }
+
+  /* ─── Highlights (課程要點) ─── */
+  .highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .highlight-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px 22px;
+    border: 1px solid var(--light-gray);
+    transition: box-shadow 0.25s, transform 0.2s;
+  }
+  .highlight-card:hover {
+    box-shadow: 0 6px 24px rgba(42,157,143,0.08);
+    transform: translateY(-2px);
+  }
+  .highlight-card h3 { font-size: 1rem; margin-bottom: 12px; color: var(--teal-dark); }
+  .highlight-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .highlight-card ul li {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .highlight-card ul li::before {
+    content: "✔";
+    color: var(--teal);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .outcomes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .outcomes-list li {
+    font-size: 0.97rem;
+    color: var(--text-mid);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .outcomes-list li::before {
+    content: "✓";
+    color: var(--teal);
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
   /* ─── Footer ─── */
   footer {
     text-align: center;
@@ -406,7 +492,7 @@
     <li><a href="#hero" class="nav-brand">🧠 課程</a></li>
     <li><a href="#values">核心價值</a></li>
     <li><a href="#demo">實戰 Demo</a></li>
-    <li><a href="#schedule">時間表</a></li>
+    <li><a href="#highlights">課程要點</a></li>
     <li><a href="#duties">五大職責</a></li>
     <li><a href="#matrix">槓桿矩陣</a></li>
     <li><a href="#plugins">核心外掛</a></li>
@@ -421,9 +507,13 @@
 <!-- ═══ Hero ═══ -->
 <section id="hero" class="hero">
   <div class="container">
-    <h1>🧠 AI 個人超強助理<br>全日實戰課程</h1>
+    <h1>🧠 AI 個人超強助理<br>實戰課程</h1>
     <p class="subtitle">高階知識工作者最強數位分身助理</p>
     <p class="tagline">不是教你用 AI，而是幫你複製一個懂你的分身</p>
+    <div class="event-info">
+      <span class="ev-badge">📅 6/13（六）下午 1:30 線上</span>
+      <span class="ev-badge">⏰ 課程時間：180 分鐘</span>
+    </div>
     <div class="img-wrap">
       <img src="img/cover.png" alt="AI 個人超強助理全日實戰課程封面" loading="lazy">
     </div>
@@ -507,33 +597,95 @@
   </div>
 </section>
 
-<!-- ═══ Schedule ═══ -->
-<section id="schedule">
+<!-- ═══ Course Highlights ═══ -->
+<section id="highlights">
   <div class="container">
-    <span class="section-label">✦ 時間配置</span>
-    <h2>全日課程時間總覽</h2>
-    <p class="section-desc">從概念到實作，一步步打造專屬於你的 AI 分身助理。</p>
+    <span class="section-label">✦ 課程要點</span>
+    <h2>這堂課你將學會什麼</h2>
+    <p class="section-desc">從零建立屬於你的 AI Agent 工作系統，涵蓋情報蒐集、知識管理、自動化流程的完整實戰訓練。</p>
 
-    <table class="schedule-table">
-      <thead>
-        <tr>
-          <th>時間</th>
-          <th>單元</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>09:00 – 09:30</td><td>開場：分身思維導入 + 三合一 Demo 震撼演練</td></tr>
-        <tr><td>09:30 – 10:30</td><td>分身五大核心職責深度解析</td></tr>
-        <tr><td>10:30 – 10:45</td><td>☕ 休息</td></tr>
-        <tr><td>10:45 – 12:00</td><td>時間槓桿矩陣：找到你的最佳分工</td></tr>
-        <tr><td>12:00 – 13:00</td><td>🍽️ 午餐</td></tr>
-        <tr><td>13:00 – 14:15</td><td>三大核心外掛實戰建置</td></tr>
-        <tr><td>14:15 – 14:30</td><td>☕ 休息</td></tr>
-        <tr><td>14:30 – 15:15</td><td>信任的邊界：資料安全與 HITL 原則</td></tr>
-        <tr><td>15:15 – 16:00</td><td>角色模板包挑選 + 個人化調整</td></tr>
-        <tr><td>16:00 – 16:30</td><td>7天挑戰佈局 + 結業：你的助理配置圖</td></tr>
-      </tbody>
-    </table>
+    <div class="highlight-grid">
+      <div class="highlight-card">
+        <h3>🤖 打造你的第一個 AI 代理人團隊</h3>
+        <ul>
+          <li>從零理解 AI Agent 的運作邏輯</li>
+          <li>建立能 24 小時協助工作的數位團隊</li>
+        </ul>
+      </div>
+      <div class="highlight-card">
+        <h3>🔭 OpenClaw 情報蒐集系統</h3>
+        <ul>
+          <li>新聞監控</li>
+          <li>關鍵字追蹤</li>
+          <li>社群趨勢分析</li>
+          <li>市場情報整理</li>
+        </ul>
+      </div>
+      <div class="highlight-card">
+        <h3>🧠 Hermes 知識管理系統</h3>
+        <ul>
+          <li>文件整理</li>
+          <li>知識庫建立</li>
+          <li>對話記錄管理</li>
+          <li>團隊知識共享</li>
+        </ul>
+      </div>
+      <div class="highlight-card">
+        <h3>📰 AI 晨報系統</h3>
+        <ul>
+          <li>新聞摘要</li>
+          <li>財經資訊整理</li>
+          <li>Podcast 自動生成</li>
+          <li>重點資訊推播</li>
+        </ul>
+      </div>
+      <div class="highlight-card">
+        <h3>💼 客戶開發自動化</h3>
+        <ul>
+          <li>客戶名單管理</li>
+          <li>跟進提醒</li>
+          <li>開發紀錄整理</li>
+          <li>業務流程優化</li>
+        </ul>
+      </div>
+      <div class="highlight-card">
+        <h3>📡 社群雷達系統</h3>
+        <ul>
+          <li>X（Twitter）監控</li>
+          <li>Reddit 熱門議題分析</li>
+          <li>社群聲量追蹤</li>
+          <li>趨勢報告產出</li>
+        </ul>
+      </div>
+      <div class="highlight-card">
+        <h3>📊 營運報表自動化</h3>
+        <ul>
+          <li>財務數據整理</li>
+          <li>營運數據分析</li>
+          <li>LINE 官方帳號分析</li>
+          <li>每日報告產出</li>
+        </ul>
+      </div>
+      <div class="highlight-card">
+        <h3>⚙️ 設計自己的 AI 工作流程</h3>
+        <ul>
+          <li>Prompt 設計技巧</li>
+          <li>Agent 工作流程規劃</li>
+          <li>自動化架構設計</li>
+          <li>實際案例拆解</li>
+        </ul>
+      </div>
+    </div>
+
+    <span class="section-label">✦ 課程結束後你將獲得</span>
+    <ul class="outcomes-list" style="margin-top: 16px;">
+      <li>建立自己的 AI Agent 工作系統</li>
+      <li>理解 OpenClaw × Hermes 的實際應用</li>
+      <li>獲得可直接複製使用的 Prompt 範本</li>
+      <li>獲得實際自動化流程案例</li>
+      <li>了解企業如何導入 AI Agent</li>
+      <li>開始打造屬於自己的 24 小時 AI 團隊</li>
+    </ul>
   </div>
 </section>
 
