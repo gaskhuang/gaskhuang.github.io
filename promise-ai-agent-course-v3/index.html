@@ -452,6 +452,89 @@
     margin-top: 1px;
   }
 
+  /* ─── CTA ─── */
+  .cta-block {
+    text-align: center;
+    padding: 64px 0;
+    background: var(--white);
+  }
+  .cta-block.cta-dark {
+    background: linear-gradient(160deg, #1a3a36 0%, #0f2420 100%);
+  }
+  .cta-block .cta-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .cta-block.cta-dark .cta-label { color: #6de8d8; }
+  .cta-block h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .cta-block.cta-dark h2 { color: #ffffff; }
+  .cta-block .cta-sub {
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  .cta-block.cta-dark .cta-sub { color: #a8ccc8; }
+  .cta-btn {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 16px 40px;
+    border-radius: 32px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 20px rgba(42,157,143,0.28);
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .cta-btn:hover {
+    background: var(--teal-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(42,157,143,0.38);
+  }
+  .cta-btn.cta-btn-outline {
+    background: transparent;
+    color: var(--teal);
+    border: 2px solid var(--teal);
+    box-shadow: none;
+    margin-left: 14px;
+  }
+  .cta-btn.cta-btn-outline:hover { background: var(--teal-light); }
+  .cta-meta {
+    margin-top: 16px;
+    font-size: 0.82rem;
+    color: var(--text-light);
+  }
+  .cta-block.cta-dark .cta-meta { color: #6a9e99; }
+  .cta-pill-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .cta-pill {
+    background: var(--teal-light);
+    color: var(--teal-dark);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 18px;
+    border-radius: 20px;
+  }
+  .cta-block.cta-dark .cta-pill { background: rgba(42,157,143,0.18); color: #6de8d8; }
+
   /* ─── Footer ─── */
   footer {
     text-align: center;
@@ -519,6 +602,22 @@
     </div>
   </div>
 </section>
+
+<!-- ═══ CTA 1 ═══ -->
+<div class="cta-block">
+  <div class="container">
+    <span class="cta-label">✦ 立即報名</span>
+    <h2>6/13（六）下午 1:30 線上開課</h2>
+    <p class="cta-sub">180 分鐘實戰課程，帶你從零建立屬於自己的 AI Agent 工作系統</p>
+    <div class="cta-pill-row">
+      <span class="cta-pill">📅 6/13（六）下午 1:30</span>
+      <span class="cta-pill">⏰ 180 分鐘</span>
+      <span class="cta-pill">💻 線上直播</span>
+    </div>
+    <a href="https://course.runningmatemarketing.com/courses/gaskaiagent202601" target="_blank" class="cta-btn">立即報名 →</a>
+    <p class="cta-meta">名額有限，報名後即收到課前資料包</p>
+  </div>
+</div>
 
 <!-- ═══ Core Values ═══ -->
 <section id="values">
@@ -959,6 +1058,22 @@
     </div>
   </div>
 </section>
+
+<!-- ═══ CTA 2 ═══ -->
+<div class="cta-block cta-dark">
+  <div class="container">
+    <span class="cta-label">✦ 開始你的 AI 之旅</span>
+    <h2>你的 AI 分身，等你來啟動</h2>
+    <p class="cta-sub">180 分鐘後，你將擁有完整的 AI Agent 工作藍圖與可直接套用的工具包</p>
+    <div class="cta-pill-row">
+      <span class="cta-pill">✓ Prompt 範本包</span>
+      <span class="cta-pill">✓ 自動化流程案例</span>
+      <span class="cta-pill">✓ OpenClaw × Hermes 實戰</span>
+    </div>
+    <a href="https://course.runningmatemarketing.com/courses/gaskaiagent202601" target="_blank" class="cta-btn">立即報名 →</a>
+    <p class="cta-meta">6/13（六）下午 1:30 線上開課</p>
+  </div>
+</div>
 
 <!-- ═══ Footer ═══ -->
 <footer>
